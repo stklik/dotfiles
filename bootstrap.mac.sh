@@ -33,7 +33,7 @@ brew cask upgrade
 # install from Brewfile
 # || true, because sometimes some packages fail.
 # If this happens, we'll still try to continue...
-# brew bundle || true
+brew bundle || true
 
 # cleanup after brewing
 brew cleanup

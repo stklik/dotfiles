@@ -47,7 +47,6 @@ cd ${DOTFILES_DIRECTORY}
 # Software Installation with arg 'full' (optional)
 # ----------------------------------
 
-
 # check if we're bootstrapping
 # then we need to install everything
 if [ $# -eq 0 ]; then
@@ -68,7 +67,7 @@ fi
 
 
 # ----------------------------------
-# Copy dotfiles & folders
+echo "Copying actual dotfiles & folders"
 # ----------------------------------
 
 timestamp=`date +%Y-%m-%d_%H-%M-%S`
@@ -80,7 +79,7 @@ for file in .{aliases,bash_profile,bashrc,exports,extra,functions,gitconfig,giti
     # if the file exists, back it up
     [ -r "${HOME}/$file" ] && [ -f "${HOME}/$file" ] && mv ${HOME}/$file ${DOTFILES_BACKUP};
     # now copy the one from here to home
-	[ -r "$file" ] && [ -f "$file" ] && cp ${DOTFILES_DIRECTORY}/$file ${HOME}/$file;
+	[ -r "$file" ] && [ -f "$file" ] && cp ${DOTFILES_DIRECTORY}/$file ${HOME}/$file && echo "$file";
 done;
 unset file;
 
@@ -90,6 +89,6 @@ unset file;
 dir=".vim"
 [ -r "${HOME}/$dir" ] && [ -d "${HOME}/$dir" ] && mv ${HOME}/$dir ${DOTFILES_BACKUP};
 # now copy the one from here to home
-[ -r "$dir" ] && [ -d "$dir" ] && cp  -R ${DOTFILES_DIRECTORY}/$dir ${HOME}/$dir;
+[ -r "$dir" ] && [ -d "$dir" ] && cp  -R ${DOTFILES_DIRECTORY}/$dir ${HOME}/$dir && echo "$dir";
 # done;
 unset dir;
