@@ -32,7 +32,7 @@ do
 done
 
 # exit if we're printing help
-if [[ "$help" = true ]]; then
+if [ "$help" = true ]; then
     exit 0
 fi
 
@@ -45,15 +45,15 @@ DOTFILES_TARBALL_PATH="https://github.com/stklik/dotfiles/tarball/master"
 # ----------------------------------
 
 # if update was passed, then we delete the current dotfiles directory and re-download it
-if [[ "$update" = true ]]; then
+if [ "$update" = true ]; then
     echo "'update' option selected. Deleting dotfiles directory: ${DOTFILES_DIRECTORY}"
-    if [[ -d ${DOTFILES_DIRECTORY} ]]; then
+    if [ -d ${DOTFILES_DIRECTORY} ]; then
         \rm -rf ${DOTFILES_DIRECTORY};
     fi
 fi
 
 # If missing, download and extract the dotfiles repository
-if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
+if [ ! -d ${DOTFILES_DIRECTORY} ]; then
     # check if curl exists, try installing if not
     if [[ ! $(command -v curl) ]]; then
         if [[ $(command -v apt) ]]; then
