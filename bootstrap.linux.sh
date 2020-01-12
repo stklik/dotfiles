@@ -17,7 +17,7 @@ sudo apt-get -y -qq install bat || true
 sudo apt-get -y -qq install curl || true
 sudo apt-get -y -qq install git || true
 sudo apt-get -y -qq install graphviz || true
-sudo apt-get -y -qq install npm node-gyp || true
+# sudo apt-get -y -qq install npm node-gyp || true
 sudo apt-get -y -qq install rsync || true
 sudo apt-get -y -qq install tldr || true
 sudo apt-get -y -qq install tmux || true
@@ -28,7 +28,7 @@ sudo apt-get -y -qq install vim || true
 sudo apt-get -y -qq install zsh || true
 
 # nicer git diffs
-npm install -g diff-so-fancy 2> /dev/null
+# npm install -g diff-so-fancy 2> /dev/null
 
 echo "Switch to zsh"
 chsh -s /usr/bin/zsh root
