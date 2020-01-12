@@ -55,11 +55,11 @@ fi
 # If missing, download and extract the dotfiles repository
 if [ ! -d ${DOTFILES_DIRECTORY} ]; then
     # check if curl exists, try installing if not
-    if [[ ! $(command -v curl) ]]; then
-        if [[ $(command -v apt) ]]; then
+    if [ ! $(command -v curl) ]; then
+        if [ $(command -v apt) ]; then
             echo "Didn't find cURL, but we need it. Installing it now!"
             sudo apt install -v curl;
-        elif [[ $(command -v brew) ]]; then
+        elif [ $(command -v brew) ]; then
             echo "Didn't find cURL, but we need it. Installing it now!"
             brew install curl 2>/dev/null;
         else
@@ -88,7 +88,7 @@ cd ${DOTFILES_DIRECTORY}
 
 # check if we're bootstrapping
 # then we need to install everything
-if [[ "$full" = true ]]; then
+if [ "$full" = true ]; then
     if [ "$(uname)" == "Darwin" ]; then
         echo "Triggering full Mac bootstrapping...";
         sh ${DOTFILES_DIRECTORY}/bootstrap.mac.sh
