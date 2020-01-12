@@ -89,10 +89,10 @@ cd ${DOTFILES_DIRECTORY}
 # check if we're bootstrapping
 # then we need to install everything
 if [ "$full" = true ]; then
-    if [ "$(uname)" == "Darwin" ]; then
+    if [ "$(uname)" = "Darwin" ]; then
         echo "Triggering full Mac bootstrapping...";
         sh ${DOTFILES_DIRECTORY}/bootstrap.mac.sh
-    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
         echo "Triggering full Linux bootstrapping...";
         sh ${DOTFILES_DIRECTORY}/bootstrap.linux.sh
     fi
