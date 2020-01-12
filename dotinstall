@@ -5,6 +5,38 @@
 set -e
 set -u
 
+
+full=false
+update=false
+help=false
+
+# idiomatic parameter and option handling in sh
+while test $# -gt 0
+do
+    case "$1" in
+        -h|--help|help) help=true;
+            echo "Dotfiles installation script"
+            echo "\tOptional args:"
+            echo "\thelp   ... display this messge"
+            echo "\tfull   ... install software"
+            echo "\tupdate ... re-download from github"
+            ;;
+        full) full=true
+            ;;
+        update) update=true
+            ;;
+        *) echo "argument $1"
+            ;;
+    esac
+    shift
+done
+
+# exit if we're printing help
+if [[ "$help" = true ]]; then
+    exit 0
+fi
+
+
 DOTFILES_DIRECTORY="${HOME}/.dotfiles"
 DOTFILES_TARBALL_PATH="https://github.com/stklik/dotfiles/tarball/master"
 
@@ -12,9 +44,16 @@ DOTFILES_TARBALL_PATH="https://github.com/stklik/dotfiles/tarball/master"
 # Download dotfiles
 # ----------------------------------
 
+# if update was passed, then we delete the current dotfiles directory and re-download it
+if [[ "$update" = true ]]; then
+    echo "'update' option selected. Deleting dotfiles directory: ${DOTFILES_DIRECTORY}"
+    if [[ -d ${DOTFILES_DIRECTORY} ]]; then
+        \rm -rf ${DOTFILES_DIRECTORY};
+    fi
+fi
+
 # If missing, download and extract the dotfiles repository
 if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
-
     # check if curl exists, try installing if not
     if [[ ! $(command -v curl) ]]; then
         if [[ $(command -v apt) ]]; then
@@ -49,11 +88,7 @@ cd ${DOTFILES_DIRECTORY}
 
 # check if we're bootstrapping
 # then we need to install everything
-if [ $# -eq 0 ]; then
-    # skip installation of files
-    echo "INFO: Didn't see argument 'full'. Not installing any software. Config only.";
-elif [ "$1" = "full" ]; then
-    # figure out which os we're on
+if [[ "$full" = true ]]; then
     if [ "$(uname)" == "Darwin" ]; then
         echo "Triggering full Mac bootstrapping...";
         sh ${DOTFILES_DIRECTORY}/bootstrap.mac.sh
@@ -62,7 +97,7 @@ elif [ "$1" = "full" ]; then
         sh ${DOTFILES_DIRECTORY}/bootstrap.linux.sh
     fi
 else
-    echo "Don't understand argument '$1'. The only valid argument is 'full'.";
+    echo "INFO: Didn't see argument 'full'. Not installing any software. Config only.";
 fi
 
 
