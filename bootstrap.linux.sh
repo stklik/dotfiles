@@ -9,8 +9,8 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
-
-sudo apt upgrade -y -qq
+sudo apt-get update -y -qq
+sudo apt-get upgrade -y -qq
 
 echo "Installing packages via apt-get"
 sudo apt-get -y -qq install bat || true
