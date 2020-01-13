@@ -716,6 +716,13 @@ defaults write com.apple.terminal SecureKeyboardEntry -bool true
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
+# set system-wide hotkey to show/hide iterm with ^\`
+defaults write com.googlecode.iterm2 Hotkey -bool true
+
+# defaults write com.googlecode.iterm2 HotkeyChar -int 96;
+# defaults write com.googlecode.iterm2 HotkeyCode -int 50;
+defaults write com.googlecode.iterm2 FocusFollowsMouse -int 1
+
 ###############################################################################
 # Time Machine                                                                #
 ###############################################################################
@@ -742,6 +749,14 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 # Sort Activity Monitor results by CPU usage
 defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0
+
+
+# Show Data in the Disk graph (instead of IO)
+defaults write com.apple.ActivityMonitor DiskGraphType -int 1
+
+# Show Data in the Network graph (instead of packets)
+defaults write com.apple.ActivityMonitor NetworkGraphType -int 1
+
 
 ###############################################################################
 # Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
