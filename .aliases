@@ -49,7 +49,7 @@ alias df='df -h'
 alias du='du -h'
 
 # Recursively delete `.DS_Store` files
-alias cleanDS='find . -type f -name "*.DS_Store" -ls -delete'
+alias cleands='find . -type f -name "*.DS_Store" -ls -delete'
 
 # Show/hide hidden files in Finder
 alias showhidden='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
