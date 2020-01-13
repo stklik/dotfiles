@@ -39,6 +39,8 @@ brew bundle || true
 brew cleanup
 echo "Finished brewing"
 
+# set Chrome as default browser
+open -a "Google Chrome" --args --make-default-browser
 
 echo "Switch to zsh"
 chsh -s /bin/zsh
