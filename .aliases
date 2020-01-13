@@ -74,3 +74,8 @@ alias ips='echo "Global IP: `globalip`" && echo "Local IP: `localip`"'
 
 # Homebrew
 alias brewup='brew update && brew upgrade && brew cask upgrade && brew cleanup && brew doctor'
+
+# dotfiles
+alias dotfiles='bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)"'
+alias dotfilesup='bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "update"'
+alias dotfilesfullup'bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "update" "full"'
