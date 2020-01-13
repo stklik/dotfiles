@@ -31,7 +31,7 @@ sudo apt-get -y -qq install zsh || true
 # npm install -g diff-so-fancy 2> /dev/null
 
 echo "Switch to zsh"
-chsh -s /usr/bin/zsh root
+chsh -s /usr/bin/zsh
 
 echo "Install Oh-My-Zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
