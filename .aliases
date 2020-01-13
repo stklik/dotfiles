@@ -65,7 +65,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias paths='path'
 
 # Google Chrome
-alias chrome='open -na "Google Chrome"' 
+alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 
 # IP addresses
 alias globalip='dig +short myip.opendns.com @resolver1.opendns.com'
