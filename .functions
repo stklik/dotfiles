@@ -117,3 +117,16 @@ if [ ! $(command -v trash) ]; then
 		mv -iv "$@" ~/.Trash/ ;
 	}
 fi
+
+
+# use 'web' to open a browser
+if type sensible-browser > /dev/null 2>&1; then # GNU `ls`
+    function web() {
+        sensible-browser $@ </dev/null >/dev/null 2>&1 & disown
+    }
+else  # Mac ?
+    function web() {
+        # Not nice, should actually be standard browser instead of chrom... But what shall we do?
+        chrome $@
+    }
+fi
