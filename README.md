@@ -9,25 +9,25 @@ Not sure if what I do is maintainable, but it works for me. Use at your own risk
 
 **Install only dotfiles**
 ```
-sh -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)"
+bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)"
 ```
 
 **Display help (add `sh help`)**
 ```
-sh -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "help"
+bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "help"
 ```
 
 **Full installation, including software packages and OS config**
 ```
-sh -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "full"
+bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "full"
 ```
 
 **Update (i.e. re-download) this repo**
 ```
-sh -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "update"
+bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "update"
 ```
 
 **Update & full install**
 ```
-sh -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "update" "full"
+bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "update" "full"
 ```
