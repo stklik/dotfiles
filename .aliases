@@ -41,7 +41,7 @@ fi
 
 alias la='ls -aF ${colorflag}'
 alias ls='ls -hF ${colorflag}'
-alias ll='ls -ahF ${colorflag}'
+alias ll='ls -lhF ${colorflag}'
 alias lal='ls -alhF ${colorflag}'
 
 # Show human friendly numbers and colors
