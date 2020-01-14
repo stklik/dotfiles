@@ -723,6 +723,13 @@ defaults write com.googlecode.iterm2 Hotkey -bool true
 # defaults write com.googlecode.iterm2 HotkeyCode -int 50;
 defaults write com.googlecode.iterm2 FocusFollowsMouse -int 1
 
+# Three-finger tap emulates middle click? Takes a boolean.
+defaults write com.googlecode.iterm2 ThreeFingerEmulates -bool true
+
+# Double-click performs smart selection
+defaults write com.googlecode.iterm2 DoubleClickPerformsSmartSelection -bool true
+
+
 ###############################################################################
 # Time Machine                                                                #
 ###############################################################################
