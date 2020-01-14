@@ -35,5 +35,6 @@ bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)"
 
 # ToDo
 
-[ ] VLC settings (vlcrc)
-[ ] Default apps for file types on Mac
+- [ ] VLC settings (vlcrc)
+- [ ] Default apps for file types on Mac
+- [ ] Symlink files instead of copy
