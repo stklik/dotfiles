@@ -31,3 +31,9 @@ bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)"
 ```
 bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "update" "full"
 ```
+
+
+# ToDo
+
+[ ] VLC settings (vlcrc)
+[ ] Default apps for file types on Mac
