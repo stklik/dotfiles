@@ -127,3 +127,6 @@ dir=".vim"
 [ -r "$dir" ] && [ -d "$dir" ] && cp  -R ${DOTFILES_DIRECTORY}/$dir ${HOME}/$dir && echo "$dir";
 # done;
 unset dir;
+
+# make new settings available
+source ${HOME}/.bash_profile
