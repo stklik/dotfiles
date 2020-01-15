@@ -30,7 +30,6 @@ cask "google-chrome"
 cask "iterm2"
 cask "spectacle"
 cask "teamviewer"
-cask "the-unarchiver"
 cask "vlc"
 
 # ----------------------------------
@@ -40,7 +39,6 @@ cask "vlc"
 brew "streamlink"
 
 cask "betterzip"
-cask "evernote"
 cask "github"
 cask "mactex"
 cask "mendeley-desktop"
