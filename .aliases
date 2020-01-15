@@ -66,6 +66,7 @@ alias paths='path'
 
 # Google Chrome
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+alias toby='chrome chrome-extension://gfdcgfhkelkdmglklfbndgopaihmoeci/toby.html'
 
 # IP addresses
 alias globalip='dig +short myip.opendns.com @resolver1.opendns.com'
@@ -79,3 +80,6 @@ alias brewup='brew update && brew upgrade && brew cask upgrade && brew cleanup &
 alias dotfiles='bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)"'
 alias dotfilesup='bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "update"'
 alias dotfilesfullup'bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "update" "full"'
+
+# random stuff
+alias wttr='curl wttr.in'
