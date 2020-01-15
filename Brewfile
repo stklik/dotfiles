@@ -59,3 +59,24 @@ cask "quicklook-json"
 cask "quicklook-csv"
 cask "qlimagesize"
 cask "qlvideo"
+
+
+# ----------------------------------
+# App Store Installations
+# ----------------------------------
+
+# Apple Stuff
+mas "Keynote" , id: 409183694
+mas "Pages" , id: 409201541
+mas "Numbers" , id: 409203825
+mas "iMovie" , id: 408981434
+mas "Xcode" , id: 497799835
+
+# Microsoft Stuff
+mas "OneDrive", id: 823766827
+mas "Microsoft Remote Desktop" , id: 1295203466
+
+# Other Stuff
+mas "1Password", id: 443987910
+mas "The Unarchiver" , id: 425424353
+mas "Gapplin" , id: 768053424
