@@ -4,6 +4,8 @@ tap "homebrew/cask"
 tap "homebrew/core"
 cask_args appdir: '/Applications'
 
+brew "mas"  # Mac App Store CLI
+
 # ----------------------------------
 # These are the important packages
 # ----------------------------------
