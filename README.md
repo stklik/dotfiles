@@ -39,3 +39,4 @@ bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)"
 - [ ] iTerm2 profiles (Hotkey Window)
 - [ ] Default apps for file types on Mac
 - [ ] Symlink files instead of copy
+- [ ] .vimrc
