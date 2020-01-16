@@ -139,7 +139,7 @@ fi
 source ${ZSH}/plugins/osx/spotify
 
 # save original spotify to _spotify
-eval "`declare -f spotify | sed 's/spotify/_spotify/'`" #backup old spotify to _spotify
+eval "`declare -f spotify | sed 's/spotify ()/_spotify ()/'`" #backup old spotify to _spotify
 function spotify() {
 	if [ ! $(command -v _spotify) ]; then
 		echo "No shpotify found. Please add 'osx' to .zshrc'"
@@ -147,19 +147,22 @@ function spotify() {
 	fi
 
         if [ $# -eq 0 ]; then
-		open -a "Spotifree";
 		echo "Launching default playlist (Have a Great Day!)";
-		_spotify play uri spotify:playlist:37i9dQZF1DX7KNKjOK0o75;
+		spotify play uri spotify:playlist:37i9dQZF1DX7KNKjOK0o75;
+		spotify vol 0;
+		spotify next;
 		spotify vol 100;
 		spotify shuffle;
 		spotify repeat;
-		spotify next;
+	elif [ "$1" = "play" ]; then
+		open -a "Spotifree";
+		_spotify $@;
 	elif [ "$1" = "shuffle" ]; then
-		if [ $(spotify toggle shuffle | grep -q "false") ] ; then
+		if $(spotify toggle shuffle | grep -q "false") ; then
 			spotify toggle shuffle;
 		fi
 	elif [ "$1" = "repeat" ]; then
-		if [ $(spotify toggle repeat | grep -q "false") ]; then
+		if $(spotify toggle repeat | grep -q "false") ; then
 			spotify toggle repeat;
 		fi
 	elif [ "$1" = "quit" ]; then
@@ -168,5 +171,4 @@ function spotify() {
 	else
 		_spotify $@;
 	fi
-
 }
