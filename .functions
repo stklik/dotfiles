@@ -162,6 +162,9 @@ function spotify() {
 		if [ $(spotify toggle repeat | grep -q "false") ]; then
 			spotify toggle repeat;
 		fi
+	elif [ "$1" = "quit" ]; then
+		_spotify quit;
+		osascript -e 'quit app "Spotifree"';
 	else
 		_spotify $@;
 	fi
