@@ -27,7 +27,7 @@ alias mv='mv -iv'
 alias rm='trash'
 
 # clear the screen nicely
-alias cls='clear;pwd'
+alias cls='clear'
 
 # grep colors
 export GREP_OPTIONS='--color=auto'
