@@ -147,6 +147,7 @@ function spotify() {
 	fi
 
         if [ $# -eq 0 ]; then
+		open -a "Spotifree";
 		echo "Launching default playlist (Have a Great Day!)";
 		_spotify play uri spotify:playlist:37i9dQZF1DX7KNKjOK0o75;
 		spotify vol 100;
