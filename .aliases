@@ -52,8 +52,8 @@ alias du='du -h'
 alias cleands='find . -type f -name "*.DS_Store" -ls -delete'
 
 # Show/hide hidden files in Finder
-alias showhidden='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
-alias hidehidden='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
+alias showfiles='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
+alias hidefiles='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop='defaults write com.apple.finder CreateDesktop -bool false && killall Finder'
