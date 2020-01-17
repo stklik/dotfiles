@@ -128,5 +128,8 @@ dir=".vim"
 # done;
 unset dir;
 
+# create a .hushlogin
+touch ${HOME}/.hushlogin
+
 # make new settings available
 source ${HOME}/.bash_profile
