@@ -59,10 +59,23 @@ alias hidefiles='defaults write com.apple.finder AppleShowAllFiles -bool false &
 alias hidedesktop='defaults write com.apple.finder CreateDesktop -bool false && killall Finder'
 alias showdesktop='defaults write com.apple.finder CreateDesktop -bool true && killall Finder'
 
+# lock screen
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 alias paths='path'
+
+# git stuff
+alias ga='git add'
+alias gc='git commit'
+alias gcm='git commit -m '
+alias gd='git diff'
+alias gst='git status'
+alias gs='git status'
+alias gss='git status -s'
+
 
 # Google Chrome
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
@@ -83,3 +96,12 @@ alias dotfilesfullup'bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfile
 
 # random stuff
 alias wttr='curl wttr.in'
+
+# translate stuff
+alias tb='trans -j -brief'
+alias tbp='trans -j -brief -play'
+alias tf='trans -j'
+alias tj='trans -j -brief -play :ja+@ja'
+
+# spotify
+alias sp='spotify'
