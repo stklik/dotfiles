@@ -66,3 +66,11 @@ sudo snap install docker || true
 sudo snap install chromium || true
 sudo snap install python38 || true
 sudo snap install vlc || true
+sudo snap install --classic --channel=14 node || true
+
+# add /snap/bin to path, otherwise we won't be able to use some stuff
+export PATH="$PATH:/snap/bin"
+
+echo -e "\e[32mInstalling npm packages\e[0m"
+sudo npm install -g tldr || true
+tldr --update

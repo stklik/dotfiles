@@ -18,7 +18,11 @@ export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
 
 # Highlight section titles in manual pages.
-export LESS_TERMCAP_md="${yellow}";
+export LESS_TERMCAP_mb=$(printf "\e[1;32m");
+export LESS_TERMCAP_md=$(printf "\e[1;32m");
 
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X';
+
+# add snaps to path, otherwise we won't be able to execute them without sudo
+export PATH="$PATH:/snap/bin"
