@@ -2,6 +2,14 @@
 
 # inspired by https://github.com/necolas/dotfiles
 
+echo -e ""
+echo -e ""
+echo -e "\e[32m# - - - - - - - - - - - - #\e[0m"
+echo -e "\e[32m# stklik's dotfiles setup #\e[0m"
+echo -e "\e[32m# - - - - - - - - - - - - #\e[0m"
+echo -e ""
+echo -e ""
+
 set -e
 set -u
 
@@ -51,7 +59,7 @@ DOTFILES_TARBALL_PATH="${DOTFILES_REPO_URL}/tarball/master"
 
 # if update was passed, then we delete the current dotfiles directory and re-download it
 if [ "$update" = true ]; then
-    echo "'update' option selected. Deleting dotfiles directory: ${DOTFILES_DIRECTORY}"
+    echo -e "\e[31m'update' option selected. Deleting dotfiles directory: ${DOTFILES_DIRECTORY}\e[0m"
     if [ -d ${DOTFILES_DIRECTORY} ]; then
         \rm -rf ${DOTFILES_DIRECTORY};
     fi
@@ -76,16 +84,16 @@ if [ ! -d ${DOTFILES_DIRECTORY} ]; then
             echo "Didn't find git / cURL, but we need it. Installing it now!"
             brew install curl 2>/dev/null;
         else
-            echo "Failed to download dotfiles!"
-            echo "git / cURL not installed, but I don't know how to install it...";
-            echo "Install it please, so I can proceed!";
+            echo -e "\e[31mFailed to download dotfiles!\e[0m"
+            echo -e "\e[31mgit / cURL not installed, but I don't know how to install it...\e[0m";
+            echo -e "\e[31mInstall it please, so I can proceed!\e[0m";
             exit 1;
         fi
     fi
 
     # actual installation stuff
     if [ "$curl_flag" = true ]; then
-        printf "Downloading dotfiles...\033[m\n"
+        echo "\e[32mDownloading dotfiles...\e[0m"
         mkdir ${DOTFILES_DIRECTORY}
         # Get the tarball
         curl -fsSLo ${HOME}/dotfiles.tar.gz ${DOTFILES_TARBALL_PATH}
@@ -108,14 +116,14 @@ cd ${DOTFILES_DIRECTORY}
 # then we need to install everything
 if [ "$full" = true ]; then
     if [ "$(uname)" = "Darwin" ]; then
-        echo "Triggering full Mac bootstrapping...";
+        echo -e "\e[32mTriggering full Mac bootstrapping...\e[0m";
         sh ${DOTFILES_DIRECTORY}/bootstrap.mac.sh
     elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
-        echo "Triggering full Linux bootstrapping...";
+        echo -e "\e[32mTriggering full Linux bootstrapping...\e[0m";
         sh ${DOTFILES_DIRECTORY}/bootstrap.linux.sh
     fi
 else
-    echo "INFO: Didn't see argument 'full'. Not installing any software. Config only.";
+    echo -e "\e[33mINFO: Didn't see argument 'full'. Not installing any software. Config only.\e[0m";
 fi
 
 
@@ -126,6 +134,7 @@ echo "Copying actual dotfiles & folders"
 timestamp=`date +%Y-%m-%d_%H-%M-%S`
 DOTFILES_BACKUP="${HOME}/.dotfiles-backup_$timestamp"
 
+echo -e "\e[32mSymlinking Dotfiles\e[0m"
 echo "Dotfiles Backup Folder is ${DOTFILES_BACKUP}"
 mkdir -p ${DOTFILES_BACKUP};
 for file in .{aliases,bash_profile,bashrc,exports,extra,functions,gitconfig,gitignore,latexmkrc,path,tmux.conf,vimrc,zshrc}; do
