@@ -6,7 +6,7 @@
 [core]
     excludesfile = ~/.gitignore
     pager = diff-so-fancy | less --tabs=1,5 -R
-    editor "vim"
+	editor = "vim"
 
 #[color "diff"]
 #    meta = "yellow bold"
@@ -19,4 +19,5 @@
 #    oldNormal = "red bold"
 #    oldHighlight = "red bold 52"
 #    newNormal = "green bold"
+#
 #    newHighlight = "green bold 22"
