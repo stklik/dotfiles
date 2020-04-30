@@ -17,21 +17,43 @@ sudo apt-get -y -qq install bat || true
 sudo apt-get -y -qq install curl || true
 sudo apt-get -y -qq install git || true
 sudo apt-get -y -qq install graphviz || true
-# sudo apt-get -y -qq install npm node-gyp || true
 sudo apt-get -y -qq install rsync || true
-sudo apt-get -y -qq install tldr || true
 sudo apt-get -y -qq install tmux || true
-sudo apt-get -y -qq install tree || true
 sudo apt-get -y -qq install tree || true
 sudo apt-get -y -qq install wget || true
 sudo apt-get -y -qq install vim || true
 sudo apt-get -y -qq install zsh || true
 
-# nicer git diffs
-# npm install -g diff-so-fancy 2> /dev/null
+# install linuxbrew 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+
+echo "Start brewing"
+# Turn off analytics
+brew analytics off
+
+brew update
+brew upgrade
+
+# install from Brewfile
+# || true, because sometimes some packages fail.
+# If this happens, we'll still try to continue...
+brew bundle || true
+
+# cleanup after brewing
+brew cleanup
+echo "Finished brewing"
+
+
 
 echo "Switch to zsh"
 chsh -s /usr/bin/zsh
 
 echo "Install Oh-My-Zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+# snaps
+sudo snap install --classic atom || true
+sudo snap install docker || true
+sudo snap install chromium || true
+sudo snap install python38 || true
+sudo snap install vlc || true

@@ -4,7 +4,7 @@ tap "homebrew/cask"
 tap "homebrew/core"
 cask_args appdir: '/Applications'
 
-brew "mas"  # Mac App Store CLI
+brew "mas" if OS.mac?  # Mac App Store CLI
 
 # ----------------------------------
 # These are the important packages
@@ -17,7 +17,7 @@ brew "graphviz"
 brew "rsync"
 brew "tldr"
 brew "tmux"
-brew "trash"
+brew "trash" if OS.mac?
 brew "tree"
 brew "wget"
 brew "vim"
@@ -28,6 +28,7 @@ brew "zsh-syntax-highlighting"
 
 cask "atom"
 cask "android-file-transfer"
+cask "background-music"
 cask "docker"
 cask "dropbox"
 cask "google-chrome"
@@ -56,6 +57,7 @@ cask "spotifree"
 cask "station"
 cask "texstudio"
 cask "transmission"
+cask "tor-browser"
 cask "zotero"
 
 # Quicklook stuff

@@ -7,6 +7,8 @@
 
 ####### TRUE ALIASES
 
+alias q='exit'
+
 # Easier navigation (oh-my-zsh already provides some)
 alias ~='cd ~' # `cd` is probably faster to type though
 
@@ -16,7 +18,6 @@ alias db='cd ~/Dropbox'
 alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
 alias g='git'
-alias nii='cd ~/OneDrive/NII'
 alias od='cd ~/OneDrive'
 
 # alias for verbose copy move and remove
@@ -31,6 +32,7 @@ alias cls='clear'
 
 # grep colors
 export GREP_OPTIONS='--color=auto'
+alias grep="grep --color=auto"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -80,6 +82,7 @@ alias gss='git status -s'
 # Google Chrome
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 alias toby='chrome chrome-extension://gfdcgfhkelkdmglklfbndgopaihmoeci/toby.html'
+alias tor='/Applications/Tor\ Browser.app/Contents/MacOS/firefox --search dummy'
 
 # IP addresses
 alias globalip='dig +short myip.opendns.com @resolver1.opendns.com'
@@ -105,3 +108,7 @@ alias tj='trans -j -brief -play :ja+@ja'
 
 # spotify
 alias sp='spotify'
+alias spp='spotify pause'
+alias spn='spotify next'
+alias spq='spotify quit'
+alias spi='spotify info'

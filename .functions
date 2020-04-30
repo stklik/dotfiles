@@ -172,3 +172,4 @@ function spotify() {
 		_spotify $@;
 	fi
 }
+

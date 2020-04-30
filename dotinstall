@@ -110,7 +110,7 @@ DOTFILES_BACKUP="${HOME}/.dotfiles-backup_$timestamp"
 
 echo "Dotfiles Backup Folder is ${DOTFILES_BACKUP}"
 mkdir -p ${DOTFILES_BACKUP};
-for file in .{aliases,bash_profile,bashrc,exports,extra,functions,gitconfig,gitignore,latexmkrc,path,vimrc,zshrc}; do
+for file in .{aliases,bash_profile,bashrc,exports,extra,functions,gitconfig,gitignore,latexmkrc,path,tmux.conf,vimrc,zshrc}; do
     # if the file exists, back it up
     [ -r "${HOME}/$file" ] && [ -f "${HOME}/$file" ] && mv ${HOME}/$file ${DOTFILES_BACKUP};
     # now copy the one from here to home
