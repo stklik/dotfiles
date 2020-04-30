@@ -25,7 +25,10 @@ sudo apt-get -y -qq install vim || true
 sudo apt-get -y -qq install zsh || true
 
 # install linuxbrew 
+sudo apt-get -y -qq install build-essential  # should be necessary for brew
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)  # adds brew to the path
+brew install gcc  # recommended by brew
 
 echo "Start brewing"
 # Turn off analytics
