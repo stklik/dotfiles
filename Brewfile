@@ -2,6 +2,7 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+tap "linuxbrew/xorg" if OS.linux?
 cask_args appdir: '/Applications'
 
 brew "mas" if OS.mac?  # Mac App Store CLI
