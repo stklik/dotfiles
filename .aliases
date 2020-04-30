@@ -31,7 +31,7 @@ alias rm='trash'
 alias cls='clear'
 
 # grep colors
-export GREP_OPTIONS='--color=auto'
+# export GREP_OPTIONS='--color=auto'
 alias grep="grep --color=auto"
 
 # Detect which `ls` flavor is in use
