@@ -9,6 +9,7 @@ set -u
 full=false
 update=false
 help=false
+curl_flag=false
 
 # idiomatic parameter and option handling in sh
 while test $# -gt 0
@@ -18,12 +19,15 @@ do
             echo "Dotfiles installation script"
             echo "\tOptional args:"
             echo "\thelp   ... display this messge"
+            echo "\tcurl   ... don't clone, but download"
             echo "\tfull   ... install software"
             echo "\tupdate ... re-download from github"
             ;;
         full) full=true
             ;;
         update) update=true
+            ;;
+        curl) curl_flag=true
             ;;
         *) echo "argument $1"
             ;;
@@ -38,7 +42,8 @@ fi
 
 
 DOTFILES_DIRECTORY="${HOME}/.dotfiles"
-DOTFILES_TARBALL_PATH="https://github.com/stklik/dotfiles/tarball/master"
+DOTFILES_REPO_URL="https://github.com/stklik/dotfiles" 
+DOTFILES_TARBALL_PATH="${DOTFILES_REPO_URL}/tarball/master"
 
 # ----------------------------------
 # Download dotfiles
@@ -54,30 +59,43 @@ fi
 
 # If missing, download and extract the dotfiles repository
 if [ ! -d ${DOTFILES_DIRECTORY} ]; then
+    if [ "$curl_flag" = true ]; then
+        echo "Called with 'curl' flag. Going to download as tarball."
+        used_tool=curl;
+    else
+        echo "Called without 'curl' flag. Going to clone as git repository."
+        used_tool=git;
+    fi
+
     # check if curl exists, try installing if not
-    if [ ! $(command -v curl) ]; then
+    if [ ! $(command -v $used_tool) ]; then
         if [ $(command -v apt) ]; then
-            echo "Didn't find cURL, but we need it. Installing it now!"
-            sudo apt install -v curl;
+            echo "Didn't find git / cURL, but we need it. Installing it now!"
+            sudo apt install -v $used_tool;
         elif [ $(command -v brew) ]; then
-            echo "Didn't find cURL, but we need it. Installing it now!"
+            echo "Didn't find git / cURL, but we need it. Installing it now!"
             brew install curl 2>/dev/null;
         else
             echo "Failed to download dotfiles!"
-            echo "cURL not installed, but I don't know how to install it...";
+            echo "git / cURL not installed, but I don't know how to install it...";
             echo "Install it please, so I can proceed!";
             exit 1;
         fi
     fi
 
-    printf "Downloading dotfiles...\033[m\n"
-    mkdir ${DOTFILES_DIRECTORY}
-    # Get the tarball
-    curl -fsSLo ${HOME}/dotfiles.tar.gz ${DOTFILES_TARBALL_PATH}
-    # Extract to the dotfiles directory
-    tar -zxf ${HOME}/dotfiles.tar.gz --strip-components 1 -C ${DOTFILES_DIRECTORY}
-    # Remove the tarball
-    rm -rf ${HOME}/dotfiles.tar.gz
+    # actual installation stuff
+    if [ "$curl_flag" = true ]; then
+        printf "Downloading dotfiles...\033[m\n"
+        mkdir ${DOTFILES_DIRECTORY}
+        # Get the tarball
+        curl -fsSLo ${HOME}/dotfiles.tar.gz ${DOTFILES_TARBALL_PATH}
+        # Extract to the dotfiles directory
+        tar -zxf ${HOME}/dotfiles.tar.gz --strip-components 1 -C ${DOTFILES_DIRECTORY}
+        # Remove the tarball
+        rm -rf ${HOME}/dotfiles.tar.gz
+    else
+        git clone ${DOTFILES_REPO_URL} ${DOTFILES_DIRECTORY}; 
+    fi
 fi
 
 cd ${DOTFILES_DIRECTORY}
