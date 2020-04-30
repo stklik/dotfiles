@@ -79,7 +79,7 @@ if [ ! -d ${DOTFILES_DIRECTORY} ]; then
     if [ ! $(command -v $used_tool) ]; then
         if [ $(command -v apt) ]; then
             echo "Didn't find git / cURL, but we need it. Installing it now!"
-            sudo apt install -y $used_tool;
+            sudo apt-get install -y $used_tool;
         elif [ $(command -v brew) ]; then
             echo "Didn't find git / cURL, but we need it. Installing it now!"
             brew install curl 2>/dev/null;
