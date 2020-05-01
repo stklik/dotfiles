@@ -24,5 +24,10 @@ export LESS_TERMCAP_md=$(printf "\e[1;32m");
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X';
 
-# add snaps to path, otherwise we won't be able to execute them without sudo
-export PATH="$PATH:/snap/bin"
+# OS specific content
+if [ "$(uname)" = "Darwin" ]; then
+    # Mac stuff
+else  # Linux stuff
+    # add snaps to path, otherwise we won't be able to execute them without sudo
+    export PATH="$PATH:/snap/bin"
+fi
