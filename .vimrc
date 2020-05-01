@@ -66,8 +66,11 @@ set number
 syntax on
 " Highlight current line
 set nocursorline
-" Make tabs as wide as two spaces
+" Make tabs as wide as four spaces
 set tabstop=4
+set expandtab  " expand tabs to shift
+set smarttab   " go to correct place automatically
+
 " Show “invisible” characters
 set lcs=tab:⟶\ ,trail:·,eol:¬,nbsp:_
 set list
