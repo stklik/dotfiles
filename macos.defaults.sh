@@ -973,6 +973,14 @@ defaults write org.m0k.transmission RandomPort -bool true
 # Kill affected applications                                                  #
 ###############################################################################
 
+
+###############################################################################
+# Visual Studio Code
+###############################################################################
+
+# enable long keypress in VSCode
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+
 for app in "Activity Monitor" \
 	"Address Book" \
 	"Calendar" \
