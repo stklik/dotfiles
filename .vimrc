@@ -21,6 +21,11 @@ call plug#end()
 
 " enable mouse usage
 set mouse=a
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
 
 " Use the Solarized Dark theme
 " let g:solarized_termtrans=1
@@ -103,8 +108,12 @@ set foldmethod=syntax
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zfu
 
-
-
+" automatically leave insert mode after 'updatetime' milliseconds of inaction
+au CursorHoldI * stopinsert
+" Leave Insert mode after X seconds without any keystroke
+" set 'updatetime' to 15 seconds when in insert mode
+au InsertEnter * let updaterestore=&updatetime | set updatetime=10000
+au InsertLeave * let &updatetime=updaterestore
 
 
 " remove support for arrowkeys
@@ -134,10 +143,9 @@ if has("autocmd")
 endif
 
 " TeX stuff
-	"  edit tex in light mode
-autocmd BufWinEnter,FileType tex set background=light
+	"  edit tex in light mode autocmd BufWinEnter,FileType tex set background=light
 let g:vimtex_index_split_width = 100
-
+let g:tex_conceal=""
 
 set colorcolumn=40,80
 set nowrap       "Don't wrap lines
@@ -155,3 +163,18 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Use Enter to insert an empty line above
 noremap <CR> O<Esc>j
+
+" Remap d from cut to delete, cut is now <leader>
+" https://stackoverflow.com/a/30423919
+" https://github.com/pazams/d-is-for-delete
+nnoremap x "_x
+nnoremap X "_X
+nnoremap d "_d
+nnoremap D "_D
+vnoremap d "_d
+
+nnoremap <leader>d ""d
+nnoremap <leader>D ""D
+vnoremap <leader>d ""d
+
+
