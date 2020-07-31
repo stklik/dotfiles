@@ -69,6 +69,8 @@ cask "quicklook-json"
 cask "quicklook-csv"
 cask "qlimagesize"
 cask "qlvideo"
+cask "suspicious-package"
+
 
 
 # ----------------------------------
