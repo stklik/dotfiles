@@ -1,1 +1,2 @@
-[ -n "$PS1" ] && source ~/.bash_profile;
+# stklik's dotfiles loading
+source ~/.bash_profile;

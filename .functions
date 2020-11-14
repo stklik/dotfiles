@@ -136,7 +136,9 @@ fi
 # note, that this relies on either "shpotify" or the oh-my-zsh 'osx' plugin
 
 # load original spotify sources from the oh-my-zsh plugin
-source ${ZSH}/plugins/osx/spotify
+if [ -f "${ZSH}/plugins/osx/spotify" ]; then
+    source ${ZSH}/plugins/osx/spotify
+fi
 
 # save original spotify to _spotify
 eval "`declare -f spotify | sed 's/spotify ()/_spotify ()/'`" #backup old spotify to _spotify

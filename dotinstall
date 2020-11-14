@@ -134,10 +134,17 @@ echo "Copying actual dotfiles & folders"
 timestamp=`date +%Y-%m-%d_%H-%M-%S`
 DOTFILES_BACKUP="${HOME}/.dotfiles-backup_$timestamp"
 
+# add the content of .bashrc to existing .bashrc
+if ! grep -q "# stklik's dotfiles" "$HOME/.bashrc"
+then
+    cat ${DOTFILES_DIRECTORY}/.bashrc >> "$HOME/.bashrc"
+    echo "Set up ANM_UNREAL_TEST_SUITE_ROOT variable"
+fi
+
 echo -e "\e[32mSymlinking Dotfiles\e[0m"
 echo "Dotfiles Backup Folder is ${DOTFILES_BACKUP}"
 mkdir -p ${DOTFILES_BACKUP};
-for file in .{aliases,bash_profile,bashrc,exports,extra,functions,gitconfig,gitignore,latexmkrc,path,tmux.conf,vimrc,zshrc}; do
+for file in .{aliases,bash_profile,exports,extra,functions,gitconfig,gitignore,latexmkrc,path,tmux.conf,vimrc,zshrc}; do
     # if the file exists, back it up
     [ -r "${HOME}/$file" ] && [ -f "${HOME}/$file" ] && mv ${HOME}/$file ${DOTFILES_BACKUP};
     # now copy the one from here to home
