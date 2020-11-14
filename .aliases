@@ -64,7 +64,6 @@ alias showdesktop='defaults write com.apple.finder CreateDesktop -bool true && k
 # lock screen
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
-
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 alias paths='path'
@@ -78,11 +77,13 @@ alias gst='git status'
 alias gs='git status'
 alias gss='git status -s'
 
-
 # Google Chrome
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 alias toby='chrome chrome-extension://gfdcgfhkelkdmglklfbndgopaihmoeci/toby.html'
 alias tor='/Applications/Tor\ Browser.app/Contents/MacOS/firefox --search dummy'
+
+# New iTerm Window
+alias it='osascript -e "tell application \"iTerm\" to tell current window to set tb to create window with default profile" > /dev/null; sleep .5; osascript -e "tell application \"iTerm\" to activate" > /dev/null'
 
 # IP addresses
 alias globalip='dig +short myip.opendns.com @resolver1.opendns.com'
@@ -112,3 +113,9 @@ alias spp='spotify pause'
 alias spn='spotify next'
 alias spq='spotify quit'
 alias spi='spotify info'
+
+alias jlab='jupyter lab --no-browser'
+
+# AWS
+alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
+
