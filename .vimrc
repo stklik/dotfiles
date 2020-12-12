@@ -33,6 +33,8 @@ silent! colorscheme solarized
 set background=dark
 
 let mapleader = ","
+let maplocalleader = "\\"
+
 
 " Make Vim more useful
 set nocompatible
@@ -85,6 +87,8 @@ set hlsearch
 set ignorecase
 " Highlight dynamically as pattern is typed
 set incsearch
+" Show the matching braces
+set showmatch
 " Show the cursor position
 set ruler
 " Don’t show the intro message when starting Vim
@@ -117,10 +121,10 @@ au InsertLeave * let &updatetime=updaterestore
 
 
 " remove support for arrowkeys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
+" noremap <Up> <Nop>
+" noremap <Down> <Nop>
+" noremap <Left> <Nop>
+" noremap <Right> <Nop>
 
 " remap movement between splits
 noremap <C-J> <C-W><C-J>
@@ -147,7 +151,7 @@ endif
 let g:vimtex_index_split_width = 100
 let g:tex_conceal=""
 
-set colorcolumn=40,80
+set colorcolumn=80,120
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 set autoindent
@@ -177,4 +181,5 @@ nnoremap <leader>d ""d
 nnoremap <leader>D ""D
 vnoremap <leader>d ""d
 
-
+" Hide and format markdown elements like **bold**
+autocmd FileType markdown set conceallevel=0
