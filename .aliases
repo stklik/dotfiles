@@ -95,8 +95,9 @@ alias brewup='brew update && brew upgrade && brew cask upgrade && brew cleanup &
 
 # dotfiles
 alias dotfiles='bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)"'
+alias dotfilesfull='bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "full"'
 alias dotfilesup='bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "update"'
-alias dotfilesfullup'bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "update" "full"'
+alias dotfilesfullup='bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "update" "full"'
 
 # random stuff
 alias wttr='curl wttr.in'

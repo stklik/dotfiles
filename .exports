@@ -27,7 +27,10 @@ export MANPAGER='less -X';
 # OS specific content
 if [ "$(uname)" = "Darwin" ]; then
     # Mac stuff
-else  # Linux stuff
+    export PATH="$PATH"
+fi
+if [ "$(uname)" = "Linux" ]; then
+    # Linux stuff
     # add snaps to path, otherwise we won't be able to execute them without sudo
     export PATH="$PATH:/snap/bin"
 fi
