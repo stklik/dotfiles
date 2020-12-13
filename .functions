@@ -173,3 +173,78 @@ function spotify() {
 	fi
 }
 
+
+function nii_start_vpn(){
+    osascript -e "tell application \"Cisco AnyConnect Secure Mobility Client\" to activate" \
+				-e "delay 0.5" \
+				-e "tell application \"System Events\" " \
+					-e "repeat until (exists window \"Cisco AnyConnect | ra.nii.ac.jp/sslvpn\" of application process \"Cisco AnyConnect Secure Mobility Client\") " \
+						-e "delay 1" \
+					-e "end repeat" \
+				-e "end tell" \
+				-e "tell application \"System Events\""  \
+					-e "tell process \"Cisco AnyConnect Secure Mobility Client\"" \
+						-e "keystroke \"$NII_PW\""  \
+						-e "keystroke return"  \
+					-e "end tell"  \
+				-e "end tell"
+	osascript -e "tell application \"System Events\" to tell process \"Cisco AnyConnect Secure Mobility Client\" to set visible to false";
+}
+
+function nii_stop_vpn(){
+	osascript -e "quit application \"Cisco AnyConnect Secure Mobility Client\"" > /dev/null 2>&1;
+}
+
+function nii(){
+	local running=$(ps aux | grep "Cisco\ AnyConnect\ Secure\ Mobility\ Client" | wc -l);
+	if [ ${running} -eq 0 ]; then
+		nii_start_vpn;
+	else
+		nii_stop_vpn;
+	fi
+}
+
+function zoom_join_mtg(){
+	local mtgid=$(echo $1  | grep -E -o '([0-9]{8,12})' | head -n 1);
+	local pass=$(echo $1 | sed 's/^.*=//');
+	echo "Meeting ID = $mtgid";
+	echo "Password = $pass";
+	osascript -e "tell application \"zoom.us\" to activate" \
+				-e "delay 2" \
+				-e "tell application \"System Events\"" \
+					-e "tell process \"zoom.us\"" \
+						-e "keystroke \"j\" using {command down}" \
+						-e "delay 1" \
+						-e "keystroke \"$mtgid\"" \
+						-e "keystroke return" \
+						-e "if (\"$1\" is not \"$pass\") then" \
+							-e "delay 2" \
+							-e "keystroke \"$pass\"" \
+							-e "keystroke return" \
+						-e "end if" \
+					-e "end tell" \
+				-e "end tell"
+}
+
+function zoom_leave_mtg(){
+	osascript -e "tell application \"zoom.us\" to activate" \
+				-e "delay 1" \
+				-e "tell application \"System Events\"" \
+					-e "tell process \"zoom.us\"" \
+						-e "keystroke \"w\" using {command down}" \
+						-e "delay .25" \
+						-e "keystroke return" \
+					-e "end tell" \
+				-e "end tell"
+}
+
+function zoom(){
+	if [ "$1" = "bye" ]; then
+		zoom_leave_mtg;
+	elif [ "$1" = "quit" ]; then
+		zoom_leave_mtg;
+		osascript -e "quit application \"zoom.us\"" > /dev/null 2>&1;
+	else
+		zoom_join_mtg $1;
+	fi
+}
