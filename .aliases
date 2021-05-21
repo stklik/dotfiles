@@ -76,6 +76,9 @@ alias gd='git diff'
 alias gst='git status'
 alias gs='git status'
 alias gss='git status -s'
+alias pull='git pull'
+alias push='git push'
+alias fetch='git fetch'
 
 # Google Chrome
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
@@ -122,4 +125,9 @@ alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cl
 
 alias py3='python3'
 alias p3='python3'
+alias py='python'
+alias activate='. venv/bin/activate'
 alias docker-clean='docker container prune --force'
+
+# ssh into virtualbox
+alias vb="ssh -i ~/.ssh/vb_id_rsa -p 2222 virtualbox@127.0.0.1"
