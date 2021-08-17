@@ -187,6 +187,7 @@ function nii_start_vpn(){
 				-e "tell application \"System Events\""  \
 					-e "tell process \"Cisco AnyConnect Secure Mobility Client\"" \
 						-e "keystroke \"$NII_PW\""  \
+                        -e "delay 0.5" \
 						-e "keystroke return"  \
 					-e "end tell"  \
 				-e "end tell"
