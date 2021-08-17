@@ -94,7 +94,7 @@ alias localip='ipconfig getifaddr en0'
 alias ips='echo "Global IP: `globalip`" && echo "Local IP: `localip`"'
 
 # Homebrew
-alias brewup='brew update && brew upgrade && brew cask upgrade && brew cleanup && brew doctor'
+alias brewup='brew update && brew upgrade && brew cleanup && brew doctor'
 
 # dotfiles
 alias dotfiles='bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)"'
@@ -127,6 +127,7 @@ alias py3='python3'
 alias p3='python3'
 alias py='python'
 alias activate='. venv/bin/activate'
+alias cenv='conda activate'
 alias docker-clean='docker container prune --force'
 
 # ssh into virtualbox
