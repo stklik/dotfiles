@@ -47,6 +47,7 @@ brew "mpg123"
 brew "translate-shell"
 
 cask "betterzip"
+cast "finicky"
 cask "github"
 cask "mactex"
 cask "mendeley-desktop"
