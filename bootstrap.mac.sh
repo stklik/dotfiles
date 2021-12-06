@@ -18,7 +18,8 @@ export HOMEBREW_NO_ANALYTICS=1
 # Check for Homebrew and install if we don't have it
 if test ! $(which brew); then
   echo "Installing HomeBrew"
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  # /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 echo "Start brewing"
@@ -28,12 +29,12 @@ brew analytics off
 # Make sure we’re using the latest Homebrew.
 brew update
 brew upgrade
-brew cask upgrade
+# brew cask upgrade
 
 # install from Brewfile
 # || true, because sometimes some packages fail.
 # If this happens, we'll still try to continue...
-brew bundle || true
+brew bundle
 
 # cleanup after brewing
 brew cleanup
@@ -53,7 +54,9 @@ fi
 # Wipe all (default) app icons from the Dock
 # This is only really useful when setting up a new Mac, or if you don’t use
 # the Dock to launch apps.
-# defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.dock persistent-apps -array
+
 
 echo "Setting Mac Defaults"
 sh macos.defaults.sh
+

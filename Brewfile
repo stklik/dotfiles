@@ -12,7 +12,6 @@ brew "mas" if OS.mac?  # Mac App Store CLI
 # ----------------------------------
 brew "bat"
 brew "bash-completion"
-brew "cask"
 brew "diff-so-fancy"
 brew "graphviz"
 brew "rsync"
@@ -27,9 +26,13 @@ brew "zsh"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 
+brew "python@3.8"
+brew "python@3.9"
+brew "python@3.10"
+
 cask "atom"
 cask "android-file-transfer"
-cask "background-music"
+# brew "background-music"
 cask "docker"
 cask "dropbox"
 cask "google-chrome"
@@ -42,24 +45,27 @@ cask "vlc"
 # Nice to have packages (optional)
 # ----------------------------------
 
-brew "streamlink"
+# brew "streamlink"
 brew "mpg123"
 brew "translate-shell"
 
+cask "barrier"
 cask "betterzip"
-cast "finicky"
+cask "fanny"
+cask "ferdi"
+cask "finicky"
 cask "github"
-cask "mactex"
-cask "mendeley-desktop"
+cask "mendeley"
 cask "presentation"
+cask "signal"
 cask "Skim"
 cask "skype"
 cask "spotify"
 cask "spotifree"
-cask "station"
 cask "texstudio"
 cask "transmission"
 cask "tor-browser"
+cask "zoom"
 cask "zotero"
 
 # Quicklook stuff
@@ -72,6 +78,8 @@ cask "qlimagesize"
 cask "qlvideo"
 cask "suspicious-package"
 
+# Big Stuff
+cask "mactex"
 
 
 # ----------------------------------
@@ -83,13 +91,19 @@ mas "Keynote" , id: 409183694
 mas "Pages" , id: 409201541
 mas "Numbers" , id: 409203825
 mas "iMovie" , id: 408981434
-mas "Xcode" , id: 497799835
 
 # Microsoft Stuff
-mas "OneDrive", id: 823766827
+mas "OneDrive" , id: 823766827
 mas "Microsoft Remote Desktop" , id: 1295203466
+mas "Microsoft Word" , id: 462054704
+mas "Microsoft Excel" , id: 462058435
+mas "Microsoft PowerPoint" , id: 462062816
 
 # Other Stuff
-mas "1Password", id: 443987910
+mas "1Password" , id: 443987910
 mas "The Unarchiver" , id: 425424353
 mas "Gapplin" , id: 768053424
+mas "Slack for Desktop" , id: 803453959
+
+# Big Stuff
+mas "Xcode" , id: 497799835
