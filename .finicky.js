@@ -7,7 +7,7 @@ module.exports = {
     // Hide the finicky icon from the top bar
     // hideIcon: true
     checkForUpdate: true,
-    // logRequests: true
+    logRequests: true
   },
   handlers: [
   { // Open Zoom URL directly in Zoom
@@ -16,13 +16,37 @@ module.exports = {
         finicky.matchDomains(/.*\zoom.us/),
         /zoom.us\/j\//,
       ],
+      url: ({urlString}) => {
+        let new_url = urlString.replace("https://www.google.com/url?q=", "").split("&source=gmail")[0];
+        finicky.log("Rewritten to -> " + new_url);
+        return new_url;  // if we open from Google services we start with google.com/url?q=
+      },
       browser: "us.zoom.xos"
   },
-  { // Open everything else from Ferdi in TOR unless Command is pressed
+  { // Open youtube from Ferdi in Private Chrome
+    match: ({ opener, url, urlString }) => {
+      return urlString.includes("youtube");
+    },
+    browser: ({urlString}) => {
+      return {
+        name: "Google Chrome",
+        args: ["--incognito", urlString]
+      }
+    }
+  },
+  { // Open everything else from Ferdi in incognito unless Command is pressed
     match: ({ opener, url, urlString }) => {
       return opener.path.includes("Ferdi.app");
     },
-    browser: ({}) => finicky.getKeys().command ? "Google Chrome" : "/Applications/Tor Browser.app"
+    url: ({urlString}) => {
+      let new_url = urlString.replace("https://www.google.com/url?q=", "").split("&source=gmail")[0];
+      finicky.log("Rewritten to -> " + new_url);
+      return new_url;  // if we open from Google services we start with google.com/url?q=
+    },
+    browser: ({urlString}) => finicky.getKeys().command ? "Google Chrome" : {
+      name: "Google Chrome",
+      args: ["--incognito", urlString]
+    }
   },
 ]
 /*

@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
-    name = Stefan Klikovits
-    email = stefan@klikovits.net
+	name = Stefan Klikovits
+	email = klikovits@nii.ac.jp
 
 [core]
     excludesfile = ~/.gitignore
@@ -28,3 +28,5 @@
 	required = true
 [pull]
 	rebase = false
+[init]
+	defaultBranch = main
