@@ -36,7 +36,7 @@ module.exports = {
   },
   { // Open everything else from Ferdi in incognito unless Command is pressed
     match: ({ opener, url, urlString }) => {
-      return opener.path.includes("Ferdi.app");
+      return opener.path.includes("Ferdi.app") || opener.path.includes("Signal.app");
     },
     url: ({urlString}) => {
       let new_url = urlString.replace("https://www.google.com/url?q=", "").split("&source=gmail")[0];
