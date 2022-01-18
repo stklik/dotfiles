@@ -2,29 +2,14 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
-tap "linuxbrew/xorg" if OS.linux?
 cask_args appdir: '/Applications'
-
-brew "mas" if OS.mac?  # Mac App Store CLI
 
 # ----------------------------------
 # These are the important packages
 # ----------------------------------
-brew "bat"
 brew "bash-completion"
 brew "diff-so-fancy"
-brew "graphviz"
-brew "rsync"
-brew "tldr"
-brew "tmux"
 brew "trash" if OS.mac?
-brew "tree"
-brew "wget"
-brew "vim"
-brew "z"
-brew "zsh"
-brew "zsh-autosuggestions"
-brew "zsh-syntax-highlighting"
 
 brew "python@3.8"
 brew "python@3.9"
@@ -32,7 +17,6 @@ brew "python@3.10"
 
 cask "atom"
 cask "android-file-transfer"
-# brew "background-music"
 cask "docker"
 cask "dropbox"
 cask "google-chrome"
@@ -80,7 +64,6 @@ cask "suspicious-package"
 
 # Big Stuff
 cask "mactex"
-
 
 # ----------------------------------
 # App Store Installations
