@@ -23,9 +23,9 @@ alias od='cd ~/OneDrive'
 # alias for verbose copy move and remove
 alias cp='cp -iv'
 alias mv='mv -iv'
-# alias rm='rm -iv'
+alias rm='rm -v'
 # use trash command instead of rm
-alias rm='trash'
+# alias rm='trash'
 
 # clear the screen nicely
 alias cls='clear'
@@ -102,6 +102,10 @@ alias dotfilesfull='bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles
 alias dotfilesup='bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "update"'
 alias dotfilesfullup='bash -c "$(curl -fsSL https://raw.github.com/stklik/dotfiles/master/dotinstall)" sh "update" "full"'
 
+# home-manager
+alias hm='home-manager'
+alias hms='home-manager switch'
+
 # random stuff
 alias wttr='curl wttr.in'
 
@@ -118,7 +122,7 @@ alias spn='spotify next'
 alias spq='spotify quit'
 alias spi='spotify info'
 
-alias jlab='jupyter lab --no-browser'
+alias jlab='python3 -m jupyter lab --no-browser'
 
 # AWS
 alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
