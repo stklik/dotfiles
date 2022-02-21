@@ -43,6 +43,8 @@ in {
       gitAndTools.delta
       graphviz
       mas
+      openssl_3_0
+      pssh
       rsync
       tldr
       tree
