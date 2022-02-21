@@ -17,8 +17,8 @@ module.exports = {
         /zoom.us\/j\//,
       ],
       url: ({urlString}) => {
-        let new_url = urlString.replace("https://www.google.com/url?q=", "").split("&source=gmail")[0];
-        finicky.log("Rewritten to -> " + new_url);
+        let new_url = urlString.replace("https://www.google.com/url?q=", "").split("&source=gmail")[0].replace("%3D", "=");
+        finicky.log("1. Rewritten to -> " + new_url);
         return new_url;  // if we open from Google services we start with google.com/url?q=
       },
       browser: "us.zoom.xos"
@@ -38,12 +38,15 @@ module.exports = {
     match: ({ opener, url, urlString }) => {
       return opener.path.includes("Ferdi.app") || opener.path.includes("Signal.app");
     },
-    url: ({urlString}) => {
-      let new_url = urlString.replace("https://www.google.com/url?q=", "").split("&source=gmail")[0];
-      finicky.log("Rewritten to -> " + new_url);
+    url: ({url, urlString}) => {
+      finicky.log("URL -> " + url);
+      finicky.log("URLString -> " + urlString);
+
+      let new_url = urlString.replace("https://www.google.com/url?q=", "").split("&source=gmail")[0].replace("%3D", "=");
+      finicky.log("2. Rewritten to -> " + new_url);
       return new_url;  // if we open from Google services we start with google.com/url?q=
     },
-    browser: ({urlString}) => finicky.getKeys().command ? "Google Chrome" : {
+    browser: ({urlString}) => finicky.getKeys().command ? {name: "Google Chrome", args: [urlString] } : {
       name: "Google Chrome",
       args: ["--incognito", urlString]
     }
