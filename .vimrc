@@ -1,40 +1,46 @@
-if empty(glob('~/.vim/autoload/plug.vim'))
-	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+" if empty(glob('~/.vim/autoload/plug.vim'))
+" 	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+" 		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
 
-call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-sensible'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
-Plug 'tpope/vim-surround'
-Plug 'lervag/vimtex'
-Plug 'yggdroot/indentline'
-Plug 'jceb/vim-orgmode'
-call plug#end()
+" call plug#begin('~/.vim/plugged')
+" Plug 'tpope/vim-sensible'
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'tpope/vim-fugitive'
+" Plug 'airblade/vim-gitgutter'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'tpope/vim-surround'
+" Plug 'lervag/vimtex'
+" Plug 'yggdroot/indentline'
+" Plug 'jceb/vim-orgmode'
+" call plug#end()
+
+" Centralize backups, swapfiles and undo history
+set backupdir=~/.vim/backups
+set directory=~/.vim/swaps
+if exists("&undodir")
+	set undodir=~/.vim/undo
+endif
 
 " enable mouse usage
 set mouse=a
-if has("mouse_sgr")
-    set ttymouse=sgr
-else
-    set ttymouse=xterm2
-end
+" if has("mouse_sgr")
+"     set ttymouse=sgr
+" else
+"     set ttymouse=xterm2
+" end
 
 " Use the Solarized Dark theme
 " let g:solarized_termtrans=1
 silent! colorscheme solarized
 set background=dark
 
-let mapleader = ","
-let maplocalleader = "\\"
-
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
 " Make Vim more useful
 set nocompatible
@@ -57,26 +63,28 @@ set encoding=utf-8 nobomb
 set binary
 set noeol
 
-" Centralize backups, swapfiles and undo history
-set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
-if exists("&undodir")
-	set undodir=~/.vim/undo
-endif
-set undolevels=1000 "maximum number of changes that can be undone
-set undoreload=10000 "maximum number lines to save for undo on a buffer reload
-
-
 " Enable line numbers
 set number
 " Enable syntax highlighting
 syntax on
 " Highlight current line
 set nocursorline
-" Make tabs as wide as four spaces
+
+
+" Tabs, Indenting, Linebreaks
 set tabstop=4
+set shiftwidth=4
+set smarttab " go to correct place automatically
+set softtabstop=4
 set expandtab  " expand tabs to shift
-set smarttab   " go to correct place automatically
+
+set nowrap       "Don't wrap lines
+set linebreak    "Wrap lines at convenient points
+set autoindent
+set smartindent
+
+" Show a nice coloured column at 120 chars
+set colorcolumn=120
 
 " Show “invisible” characters
 set lcs=tab:⟶\ ,trail:·,eol:¬,nbsp:_
@@ -119,13 +127,6 @@ au CursorHoldI * stopinsert
 au InsertEnter * let updaterestore=&updatetime | set updatetime=10000
 au InsertLeave * let &updatetime=updaterestore
 
-
-" remove support for arrowkeys
-" noremap <Up> <Nop>
-" noremap <Down> <Nop>
-" noremap <Left> <Nop>
-" noremap <Right> <Nop>
-
 " remap movement between splits
 noremap <C-J> <C-W><C-J>
 noremap <C-K> <C-W><C-K>
@@ -150,20 +151,6 @@ endif
 	"  edit tex in light mode autocmd BufWinEnter,FileType tex set background=light
 let g:vimtex_index_split_width = 100
 let g:tex_conceal=""
-
-set colorcolumn=80,120
-set nowrap       "Don't wrap lines
-set linebreak    "Wrap lines at convenient points
-set autoindent
-set smartindent
-set smarttab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-
-" use <lead>ev and <lead>sv to edit and source the vimrc file
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Use Enter to insert an empty line above
 noremap <CR> O<Esc>j
