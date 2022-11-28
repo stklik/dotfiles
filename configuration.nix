@@ -303,7 +303,7 @@ system = {
 
             # Set a blazingly fast keyboard repeat rate
             InitialKeyRepeat = 20;
-            KeyRepeat = 5;
+            KeyRepeat = 2;
 
             # Sets the level of font smoothing (sub-pixel font rendering).
             AppleFontSmoothing = 1;

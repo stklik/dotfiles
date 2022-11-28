@@ -38,6 +38,7 @@ in {
       openssl_3_0
       pssh
       rsync
+      rclone
       tldr
       tmux
       tree
@@ -74,6 +75,14 @@ in {
         '';
       profileExtra = bash_profile_content;
     };
+
+    broot.enable = true;  # a better way to navigate directories.
+    # broot.enableBashIntegration = true;
+    # broot.enableZshIntegration = true;
+
+    dircolors.enable = true;
+    # dircolors.enableBashIntegration = true;
+    # dircolors.enableZshIntegration = true;
 
     direnv.enable = true;
     direnv.nix-direnv.enable = true;
