@@ -7,22 +7,24 @@ cask_args appdir: '/Applications'
 # ----------------------------------
 # These are the important packages
 # ----------------------------------
-brew "bash-completion"
 brew "diff-so-fancy"
 brew "trash" if OS.mac?
 
+brew "python@3.7"
 brew "python@3.8"
 brew "python@3.9"
 brew "python@3.10"
+brew "python@3.11"
 
-cask "atom"
 cask "android-file-transfer"
 cask "docker"
 cask "dropbox"
 cask "google-chrome"
 cask "iterm2"
+cask "pycharm"
 cask "spectacle"
 cask "teamviewer"
+cask "visual-studio-code"
 cask "vlc"
 
 # ----------------------------------
@@ -36,7 +38,7 @@ brew "translate-shell"
 cask "barrier"
 cask "betterzip"
 cask "fanny"
-cask "ferdi"
+cask "ferdium"
 cask "finicky"
 cask "github"
 cask "mendeley"
@@ -83,7 +85,6 @@ mas "Microsoft Excel" , id: 462058435
 mas "Microsoft PowerPoint" , id: 462062816
 
 # Other Stuff
-mas "1Password" , id: 443987910
 mas "The Unarchiver" , id: 425424353
 mas "Gapplin" , id: 768053424
 mas "Slack for Desktop" , id: 803453959

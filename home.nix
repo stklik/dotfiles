@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   bash_profile_content =
     ''
@@ -10,19 +10,12 @@ let
     done;
     unset file;
     '';
-
-  comma = import ( pkgs.fetchFromGitHub {
-      owner = "nix-community";
-      repo = "comma";
-      rev = "4a62ec17e20ce0e738a8e5126b4298a73903b468";
-      sha256 = "0n5a3rnv9qnnsrl76kpi6dmaxmwj1mpdd2g0b4n1wfimqfaz6gi1";
-  }) {};
 in {
   home = {
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
-    username = "stefan";
-    homeDirectory = "/Users/stefan";
+    # username = "stefan";
+    # homeDirectory = "/Users/stefan";
 
     # symlink all dotfiles !
     file = {
@@ -42,14 +35,17 @@ in {
       curl
       gitAndTools.delta
       graphviz
-      mas
       openssl_3_0
       pssh
       rsync
       tldr
+      tmux
       tree
       wget
       zsh-z
+    ] ++ lib.optionals stdenv.isDarwin [
+      m-cli
+      mas
     ];
 
   # This value determines the Home Manager release that your
@@ -133,6 +129,8 @@ in {
     };
 
     htop.enable = true;
+    htop.settings.show_program_path = true;
+
     jq.enable = true;
 
     # NOTE: Extra config from dotfile!
@@ -180,12 +178,15 @@ in {
       enable = true;
       enableAutosuggestions = true;
       enableCompletion = true;
+      enableSyntaxHighlighting = true;
       autocd = true;
 
       oh-my-zsh = {
         enable = true;
         theme = "robbyrussell";
-        plugins=["direnv" "docker" "extract" "gitignore" "macos" "pip" "python" "tmux" "transfer" "z"];
+        plugins = [
+          "direnv" "docker" "extract" "gitignore" "pip" "python" "transfer" "z"
+	];
       };
 
       initExtra = bash_profile_content;
