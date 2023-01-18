@@ -28,15 +28,18 @@ module.exports = {
       return urlString.includes("youtube");
     },
     browser: ({urlString}) => {
+      // return {
+      //   name: "Google Chrome",
+      //   args: ["--incognito", urlString]
+      // }
       return {
-        name: "Google Chrome",
-        args: ["--incognito", urlString]
+        name: "DuckDuckGo"
       }
     }
   },
   { // Open everything else from Ferdi in incognito unless Command is pressed
     match: ({ opener, url, urlString }) => {
-      return opener.path.includes("Ferdi.app") || opener.path.includes("Signal.app");
+      return opener.path.includes("Ferdi.app") || opener.path.includes("Ferdium.app") || opener.path.includes("Signal.app") || opener.path.includes("Rambox.app");
     },
     url: ({url, urlString}) => {
       finicky.log("URL -> " + url);

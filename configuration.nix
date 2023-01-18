@@ -325,7 +325,7 @@ system = {
         };
 
         # Use scroll gesture with the Ctrl (^) modifier key to zoom
-        universalaccess.closeViewScrollWheelToggle = true;
+        # universalaccess.closeViewScrollWheelToggle = true;
         # sudo defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 
         # Follow the keyboard focus while zoomed in
@@ -387,7 +387,7 @@ system = {
             appswitcher-all-displays = true;
 
             # Hot corners 
-            wvous-bl-corner = 10;
+            # wvous-bl-corner = 10;
 
         };
 

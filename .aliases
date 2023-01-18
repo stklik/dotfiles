@@ -26,6 +26,7 @@ alias mv='mv -iv'
 alias rm='rm -v'
 # use trash command instead of rm
 # alias rm='trash'
+alias rmrf='rm -rf'
 
 # clear the screen nicely
 alias cls='clear'
@@ -72,6 +73,7 @@ alias paths='path'
 alias ga='git add'
 alias gc='git commit'
 alias gcm='git commit -m '
+alias co='git checkout'
 alias gd='git diff'
 alias gst='git status'
 alias gs='git status'
@@ -79,6 +81,7 @@ alias gss='git status -s'
 alias pull='git pull'
 alias push='git push'
 alias fetch='git fetch'
+alias checkout='git checkout'
 
 # Google Chrome
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
@@ -138,3 +141,7 @@ alias docker-clean='docker container prune --force'
 
 # ssh into virtualbox
 alias vb="ssh -i ~/.ssh/vb_id_rsa -p 2222 virtualbox@127.0.0.1"
+
+# alias for kitty ssh
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+[ "$TERM" = "xterm-kitty" ] && alias icat='kitty +kitten icat'

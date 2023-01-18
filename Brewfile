@@ -25,13 +25,14 @@ cask "pycharm"
 cask "spectacle"
 cask "teamviewer"
 cask "visual-studio-code"
-cask "vlc"
+cask "vlc" 
 
 # ----------------------------------
 # Nice to have packages (optional)
 # ----------------------------------
 
 # brew "streamlink"
+brew "imagemagick"
 brew "mpg123"
 brew "translate-shell"
 
@@ -42,6 +43,7 @@ cask "ferdium"
 cask "finicky"
 cask "github"
 cask "mendeley"
+cask "monitorcontrol"
 cask "presentation"
 cask "signal"
 cask "Skim"
@@ -63,6 +65,7 @@ cask "quicklook-csv"
 cask "qlimagesize"
 cask "qlvideo"
 cask "suspicious-package"
+cask "syntax-highlight"
 
 # Big Stuff
 cask "mactex"
@@ -90,4 +93,4 @@ mas "Gapplin" , id: 768053424
 mas "Slack for Desktop" , id: 803453959
 
 # Big Stuff
-mas "Xcode" , id: 497799835
+# mas "Xcode" , id: 497799835
